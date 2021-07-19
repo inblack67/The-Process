@@ -11,6 +11,8 @@
 - **Process.get(key)**
 - **Process.get/1** => get all the process values
 - Keep process dictionary immutable
+- Kill => **Process.exit(self(), :kill)**
+- pid(0, 277, 0) => this function is only avail in the console
 
 ## Tasks
 
