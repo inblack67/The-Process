@@ -1,4 +1,6 @@
-# Proc
+# The Elixir Processes
+
+## iex & spawn
 
 - **flush** => only works in a shell => prints out all the messages in the process message queue and then deletes them all from the queue
 - **v** => gives the prev result in the console
@@ -9,3 +11,7 @@
 - **Process.get(key)**
 - **Process.get/1** => get all the process values
 - Keep process dictionary immutable
+
+## Tasks
+
+
