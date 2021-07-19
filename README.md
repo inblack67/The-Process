@@ -14,4 +14,11 @@
 
 ## Tasks
 
+- Just like **spawn** but use **task**
+- Elixir & Erlang are failure domain driven languages
 
+### start_link
+
+- VM has blast radius => default is 1. The only thing that fails is the failure itself (current process which lead to the failure)
+- Panic and restarts => **kubernetes?**
+- Limit the blast radius
