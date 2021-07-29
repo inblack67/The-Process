@@ -1,4 +1,4 @@
-defmodule Proc.Tasks do
+defmodule Proc.Tasks1 do
   # tasks returns :ok tuple => unlike spawn
 
   def chained_boundaries do
