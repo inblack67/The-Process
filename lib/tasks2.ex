@@ -1,10 +1,23 @@
 defmodule Proc.Tasks2 do
   def heavy_lifting(arg) do
-    {:ok, pid} = Task.start_link(fn -> do_heavy_lifting(arg) end)
+    # unique ref (snapshot) => date & time & pid
+    ref = make_ref()
+    source = self()
+    {:ok, pid} = Task.start_link(fn -> do_heavy_lifting(source, arg, ref) end)
+
+    receive do
+      # accepting receives from the process which has our unique ref => do_heavy_lifting
+      {:ok, ^ref, message} ->
+        IO.puts(message)
+
+      10000 ->
+        IO.puts("timout")
+    end
+
     pid
   end
 
-  defp do_heavy_lifting(arg) do
+  defp do_heavy_lifting(source, arg, ref) do
     parent = self()
 
     Task.start_link(fn ->
@@ -15,7 +28,10 @@ defmodule Proc.Tasks2 do
 
     receive do
       :done ->
-        IO.puts("done heavy lifting with arg #{arg}")
+        send(source, {:ok, ref, "done heavy lifting with arg #{arg}"})
+
+      10000 ->
+        IO.puts("timout")
     end
   end
 end
