@@ -11,6 +11,7 @@ defmodule Proc.Task3 do
 
     IO.inspect(task)
 
+    # Task.await(task, :infinity) # timeout till infinity
     Task.await(task)
 
     IO.puts("hello")
